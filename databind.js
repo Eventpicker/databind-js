@@ -6,20 +6,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 (function() {
-	var prefix = "{{";
-    	var suffix = "}}";
-	var regex = [
-		new RegExp(prefix + "[\\s\\S]*?" + suffix ,"g"),
-		/^\s*parts\[0\].get\(\)\s*$/,
-		/'.*?'|".*?"|#\w+(?:\.\w+|\[(?:.*?\[.*?\])*?[^\[]*?\])*(\s*(?:\+\+|--|\+=|-=|\*=|\/=|%=|=(?!=)|\())?/g,
-		/\.\w+|\[(?:.*?\[.*?\])*?[^\[]*?\]/g,
-		/\bthis\.(\w+)\s*\(/g,
-		/-([a-z])/g,
-		/;\s*\S/,
-		/^\d+$/
-	];
-	var propPrefix = "__prop__";
-	var exprCache = {};
+    var prefix = "§";
+    var suffix = "§";
+    var regex = [
+        new RegExp(prefix + "[\\s\\S]*?" + suffix ,"g"),
+        /^\s*parts\[0\].get\(\)\s*$/,
+        /'.*?'|".*?"|#\w+(?:\.\w+|\[(?:.*?\[.*?\])*?[^\[]*?\])*(\s*(?:\+\+|--|\+=|-=|\*=|\/=|%=|=(?!=)|\())?/g,
+        /\.\w+|\[(?:.*?\[.*?\])*?[^\[]*?\]/g,
+        /\bthis\.(\w+)\s*\(/g,
+        /-([a-z])/g,
+        /;\s*\S/,
+        /^\d+$/
+    ];
+    var propPrefix = "__prop__";
+    var exprCache = {};
 
 	/**
 	 * Helpers
@@ -678,13 +678,6 @@
 					if (node.className) newNode.className = newNode.className ? (newNode.className + " " + node.className) : node.className;
 					node.parentNode.replaceChild(newNode, node);
 					node = newNode;
-					bindingStore.bindings.push({
-						bind: function() {},
-						unbind: function() {
-							if (window.jQuery) jQuery(node).triggerHandler("unmount")
-							else node.dispatchEvent(new Event("unmount"))
-						}
-					})
 					var extendedData = null;
 					for (var i=0; i<dirs.vars.length; i++) {
 							if (!extendedData) extendedData = extend(data);
