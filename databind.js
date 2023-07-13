@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 (function() {
-    var prefix = "ง";
-    var suffix = "ง";
+    var prefix = "ยง";
+    var suffix = "ยง";
     var regex = [
         new RegExp(prefix + "[\\s\\S]*?" + suffix ,"g"),
         /^\s*parts\[0\].get\(\)\s*$/,
