@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 (function() {
-	const prefix = "{{"
-	const suffix = "}}"
+	const prefix = "§"
+	const suffix = "§"
 	const regex = {
 		textBindExpr: new RegExp(prefix + "[\\s\\S]*?" + suffix ,"g"),
 		singlePart: /^\s*parts\[0\].get\(\)\s*$/,
